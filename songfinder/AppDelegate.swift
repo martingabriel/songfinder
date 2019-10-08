@@ -78,6 +78,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         menu.addItem(NSMenuItem(title: "Find live", action: #selector(searchLive(_:)), keyEquivalent: "l"))
         menu.addItem(NSMenuItem(title: "Find acoustic", action: #selector(searchAcoustic(_:)), keyEquivalent: "a"))
         menu.addItem(NSMenuItem(title: "Find cover", action: #selector(searchCover(_:)), keyEquivalent: "c"))
+        menu.addItem(NSMenuItem(title: "Find piano", action: #selector(searchPiano(_:)), keyEquivalent: "p"))
         
         statusItem.menu = menu
     }
@@ -92,6 +93,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     
     @objc func searchCover(_ sender: Any?) {
         searchSong(option: searchOption.cover)
+    }
+    
+    @objc func searchPiano(_ sender: Any?) {
+        searchSong(option: searchOption.piano)
     }
     
     func getSong() {
