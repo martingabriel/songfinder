@@ -27,12 +27,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     let optionPiano = "+piano"
     let searchQuery = "https://www.youtube.com/results?search_query="
     
-    // iTunes & Spotify applications
-    let iTunesApp: AnyObject = SBApplication(bundleIdentifier: "com.apple.iTunes")!
-    let spotifyApp: AnyObject = SBApplication(bundleIdentifier: "com.spotify.client")!
-    
-    var SongName : AnyObject?
-    var Artist : AnyObject?
+    let player = MusicPlayer()
     
     // current song menu item
     var currentSongMenuItem: NSMenuItem = NSMenuItem(title: "No current song", action: nil, keyEquivalent: "")
@@ -56,12 +51,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     
     func menuWillOpen(_ menu: NSMenu) {
         
-        getSong()
-        if let songname = SongName, let artist = Artist {
+        let songInfo = player.getSong()
+        if let songname = songInfo.songname, let artist = songInfo.artist {
             var track: String = ""
-            track.append((artist as! String))
+            track.append(artist)
             track.append(" - ")
-            track.append((songname as! String))
+            track.append(songname)
             
             currentSongMenuItem.title = track
         } else {
@@ -99,40 +94,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         searchSong(option: searchOption.piano)
     }
     
-    func getSong() {
-        if let iTunesRunning = iTunesApp.isRunning {
-            if iTunesRunning {
-                let trackDict = iTunesApp.currentTrack!().properties as Dictionary
-                
-                // get song name and artist from iTunes
-                if let songname = trackDict["name"], let artist = trackDict["artist"] {
-                    SongName = songname as AnyObject
-                    Artist = artist as AnyObject
-                    // iTunes is first option
-                    return
-                } else {
-                    SongName = nil
-                    Artist = nil
-                }
-            }
-        }
-        
-        if let spotifyRunning = spotifyApp.isRunning {
-            // get song name and artist from Spotify
-            if spotifyRunning {
-                SongName = spotifyApp.currentTrack!.name as AnyObject
-                Artist = spotifyApp.currentTrack!.artist as AnyObject
-            } else {
-                SongName = nil
-                Artist = nil
-            }
-        }
-    }
-    
     func searchSong(option: searchOption) {
-        getSong()
+        let songInfo = player.getSong()
         
-        if let songName = SongName, let artist = Artist {
+        if let songName = songInfo.songname, let artist = songInfo.artist {
             var searchOptions = [String]()
             
             // get search options

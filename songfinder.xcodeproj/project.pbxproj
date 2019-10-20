@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B066352235CBD4E00BED86B /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B066351235CBD4E00BED86B /* MusicPlayer.swift */; };
 		6B0A51E42347C9C80078F55A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0A51E32347C9C80078F55A /* AppDelegate.swift */; };
 		6B0A51E62347C9C80078F55A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0A51E52347C9C80078F55A /* ViewController.swift */; };
 		6B0A51E82347C9CE0078F55A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B0A51E72347C9CE0078F55A /* Assets.xcassets */; };
@@ -16,7 +17,18 @@
 		6B221305234A7679009F7F4E /* Spotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B221302234A7679009F7F4E /* Spotify.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		6BEEB6BD2351185D00763638 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6B0A51D82347C9C70078F55A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6BEEB6A32351174D00763638;
+			remoteInfo = LauncherApplication;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		6B066351235CBD4E00BED86B /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
 		6B0A51E02347C9C80078F55A /* songfinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = songfinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B0A51E32347C9C80078F55A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B0A51E52347C9C80078F55A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +80,7 @@
 				6B0A51E92347C9CE0078F55A /* Main.storyboard */,
 				6B0A51EC2347C9CE0078F55A /* Info.plist */,
 				6B0A51ED2347C9CE0078F55A /* songfinder.entitlements */,
+				6B066351235CBD4E00BED86B /* MusicPlayer.swift */,
 			);
 			path = songfinder;
 			sourceTree = "<group>";
@@ -86,6 +99,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				6BEEB6BE2351185D00763638 /* PBXTargetDependency */,
 			);
 			name = songfinder;
 			productName = songfinder;
@@ -98,7 +112,7 @@
 		6B0A51D82347C9C70078F55A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1030;
+				LastSwiftUpdateCheck = 1110;
 				LastUpgradeCheck = 1030;
 				ORGANIZATIONNAME = "Martin Gabriel";
 				TargetAttributes = {
@@ -144,6 +158,7 @@
 			files = (
 				6B0A51E62347C9C80078F55A /* ViewController.swift in Sources */,
 				6B221305234A7679009F7F4E /* Spotify.swift in Sources */,
+				6B066352235CBD4E00BED86B /* MusicPlayer.swift in Sources */,
 				6B221303234A7679009F7F4E /* iTunes.swift in Sources */,
 				6B221304234A7679009F7F4E /* SpotifyScripting.swift in Sources */,
 				6B0A51E42347C9C80078F55A /* AppDelegate.swift in Sources */,
@@ -151,6 +166,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6BEEB6BE2351185D00763638 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			targetProxy = 6BEEB6BD2351185D00763638 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		6B0A51E92347C9CE0078F55A /* Main.storyboard */ = {
