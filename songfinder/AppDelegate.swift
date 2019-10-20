@@ -18,6 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         case acoustic
         case cover
         case piano
+        case karaoke
     }
     
     // search constants
@@ -25,6 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     let optionAccoustic = "+accoustic"
     let optionCover = "+cover"
     let optionPiano = "+piano"
+    let optionKaraoke = "+karaoke"
     let searchQuery = "https://www.youtube.com/results?search_query="
     
     let player = MusicPlayer()
@@ -74,6 +76,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         menu.addItem(NSMenuItem(title: "Find acoustic", action: #selector(searchAcoustic(_:)), keyEquivalent: "a"))
         menu.addItem(NSMenuItem(title: "Find cover", action: #selector(searchCover(_:)), keyEquivalent: "c"))
         menu.addItem(NSMenuItem(title: "Find piano", action: #selector(searchPiano(_:)), keyEquivalent: "p"))
+        menu.addItem(NSMenuItem(title: "FInd karaoke", action: #selector(searchKaraoke(_:)), keyEquivalent: "k"))
         
         statusItem.menu = menu
     }
@@ -94,6 +97,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         searchSong(option: searchOption.piano)
     }
     
+    @objc func searchKaraoke(_ sender: Any?) {
+        searchSong(option: searchOption.karaoke)
+    }
+    
     func searchSong(option: searchOption) {
         let songInfo = player.getSong()
         
@@ -110,6 +117,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
                     searchOptions.append(optionLive)
                 case searchOption.piano:
                     searchOptions.append(optionPiano)
+                case searchOption.karaoke:
+                    searchOptions.append(optionKaraoke)
                 }
             
             // search url
