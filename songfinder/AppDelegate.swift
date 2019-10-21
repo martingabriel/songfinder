@@ -21,25 +21,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         case karaoke
     }
     
-    // search constants
-    let optionLive = "+live"
-    let optionAccoustic = "+accoustic"
-    let optionCover = "+cover"
-    let optionPiano = "+piano"
-    let optionKaraoke = "+karaoke"
-    let searchQuery = "https://www.youtube.com/results?search_query="
-    
     let player = MusicPlayer()
     
     // current song menu item
-    var currentSongMenuItem: NSMenuItem = NSMenuItem(title: "No current song", action: nil, keyEquivalent: "")
+    var currentSongMenuItem: NSMenuItem = NSMenuItem(title: Constants.noCurrentSong, action: nil, keyEquivalent: "")
     
     // status bar item
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         if let button = statusItem.button {
-            //button.image = NSImage(named: NSImage.Name("StatusBarButtonImage"))
             button.title = "🎧"
             button.toolTip = "Click to find currently playing songs live version on youtube"
         }
@@ -52,7 +43,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     }
     
     func menuWillOpen(_ menu: NSMenu) {
-        
         let songInfo = player.getSong()
         if let songname = songInfo.songname, let artist = songInfo.artist {
             var track: String = ""
@@ -62,7 +52,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
             
             currentSongMenuItem.title = track
         } else {
-            currentSongMenuItem.title = "No current song"
+            currentSongMenuItem.title = Constants.noCurrentSong
         }
     }
     
@@ -110,19 +100,19 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
             // get search options
             switch option {
                 case searchOption.acoustic:
-                    searchOptions.append(optionAccoustic)
+                    searchOptions.append(Constants.optionAcoustic)
                 case searchOption.cover:
-                    searchOptions.append(optionCover)
+                    searchOptions.append(Constants.optionCover)
                 case searchOption.live:
-                    searchOptions.append(optionLive)
+                    searchOptions.append(Constants.optionLive)
                 case searchOption.piano:
-                    searchOptions.append(optionPiano)
+                    searchOptions.append(Constants.optionPiano)
                 case searchOption.karaoke:
-                    searchOptions.append(optionKaraoke)
+                    searchOptions.append(Constants.optionKaraoke)
                 }
             
             // search url
-            var searchUrl = searchQuery
+            var searchUrl = Constants.searchQuery
             searchUrl.append((artist as AnyObject).replacingOccurrences(of: " ", with: "+"))
             searchUrl.append("+")
             searchUrl.append((songName as AnyObject).replacingOccurrences(of: " ", with: "+"))
